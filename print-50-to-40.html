@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Print Numbers</title>
+</head>
+<body>
+  <button id="printButton">Print Numbers</button>
+  <div id="output"></div>
+
+  <script>
+    const printButton = document.getElementById("printButton");
+const outputDiv = document.getElementById("output");
+
+printButton.addEventListener("click", function() {
+  outputDiv.innerHTML = ""; // Clear previous output
+  
+  for (let i = 50; i >= 40; i--) {
+    const numberElement = document.createElement("p");
+    numberElement.textContent = i;
+    outputDiv.appendChild(numberElement);
+  }
+});
+
+  </script>
+</body>
+</html>

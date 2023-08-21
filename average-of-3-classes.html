@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Class Averages</title>
+</head>
+<body>
+  <h1>Class Averages</h1>
+  
+  <h2>Class 1</h2>
+  <input id="class1Grade" type="number" placeholder="Enter grade...">
+  <button id="class1Add">Add Grade</button>
+
+  <h2>Class 2</h2>
+  <input id="class2Grade" type="number" placeholder="Enter grade...">
+  <button id="class2Add">Add Grade</button>
+
+  <h2>Class 3</h2>
+  <input id="class3Grade" type="number" placeholder="Enter grade...">
+  <button id="class3Add">Add Grade</button>
+
+  <button id="calculateButton">Calculate Averages</button>
+  <div id="output"></div>
+
+  <script>
+    const class1GradeInput = document.getElementById("class1Grade");
+const class1AddButton = document.getElementById("class1Add");
+const class2GradeInput = document.getElementById("class2Grade");
+const class2AddButton = document.getElementById("class2Add");
+const class3GradeInput = document.getElementById("class3Grade");
+const class3AddButton = document.getElementById("class3Add");
+const calculateButton = document.getElementById("calculateButton");
+const outputDiv = document.getElementById("output");
+
+const grades = {
+  class1: [],
+  class2: [],
+  class3: []
+};
+
+class1AddButton.addEventListener("click", function() {
+  const grade = parseInt(class1GradeInput.value);
+  if (!isNaN(grade)) {
+    grades.class1.push(grade);
+    class1GradeInput.value = "";
+  }
+});
+
+class2AddButton.addEventListener("click", function() {
+  const grade = parseInt(class2GradeInput.value);
+  if (!isNaN(grade)) {
+    grades.class2.push(grade);
+    class2GradeInput.value = "";
+  }
+});
+
+class3AddButton.addEventListener("click", function() {
+  const grade = parseInt(class3GradeInput.value);
+  if (!isNaN(grade)) {
+    grades.class3.push(grade);
+    class3GradeInput.value = "";
+  }
+});
+
+calculateButton.addEventListener("click", function() {
+  outputDiv.innerHTML = "";
+  
+  let totalSum = 0;
+  let totalGrades = 0;
+
+  for (const className in grades) {
+    const classGrades = grades[className];
+    let classSum = 0;
+
+    for (const grade of classGrades) {
+      classSum += grade;
+      totalSum += grade;
+      totalGrades++;
+    }
+
+    const classAverage = classGrades.length > 0 ? classSum / classGrades.length : 0;
+    const classAverageElement = document.createElement("p");
+    classAverageElement.textContent = `Average for ${className}: ${classAverage.toFixed(2)}`;
+    outputDiv.appendChild(classAverageElement);
+  }
+
+  const overallAverage = totalGrades > 0 ? totalSum / totalGrades : 0;
+  const overallAverageElement = document.createElement("p");
+  overallAverageElement.textContent = `Overall Average: ${overallAverage.toFixed(2)}`;
+  outputDiv.appendChild(overallAverageElement);
+});
+
+  </script>
+</body>
+</html>

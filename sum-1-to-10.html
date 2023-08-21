@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculate Sum</title>
+</head>
+<body>
+  <button id="calculateButton">Calculate Sum</button>
+  <div id="output"></div>
+
+  <script>
+    const calculateButton = document.getElementById("calculateButton");
+const outputDiv = document.getElementById("output");
+
+calculateButton.addEventListener("click", function() {
+  let sum = 0;
+  for (let i = 1; i <= 10; i++) {
+    sum += i;
+  }
+  
+  outputDiv.textContent = `Sum of numbers from 1 to 10: ${sum}`;
+});
+
+  </script>
+</body>
+</html>
